@@ -3,7 +3,8 @@ require 'open-uri'
 
 root_uri = 'https://www.google.com/search?q='
 middle_query = '+is+the+new+'
-words = ['white','black','drug','ruby','java']
+
+words = ARGV.count > 1 ? ARGV : ['white','black','drug','ruby','java']
 
 print "X \\ Y\t#{words.join("\t")}\n"
 words.each do |x|
