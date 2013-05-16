@@ -5,10 +5,11 @@ root_uri = 'https://www.google.com/search?q='
 middle_query = '+is+the+new+'
 
 words = ARGV.count > 1 ? ARGV : ['white','black','drug','ruby','java']
+output_words = words.map { |w| w.length > 8 ? "#{w[0..2]}..#{w[w.length-3..w.length-1]}" : w }
 
-print "X \\ Y\t#{words.join("\t")}\n"
-words.each do |x|
-  print "#{x}\t"
+print "X \\ Y\t#{output_words.join("\t")}\n"
+words.each_with_index do |x,i|
+  print "#{output_words[i]}\t"
   words.each do |y|
     if x != y
       query_string = "#{root_uri}#{x}#{middle_query}#{y}"
